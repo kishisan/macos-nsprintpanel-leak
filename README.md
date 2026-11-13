@@ -3,6 +3,7 @@
 On macOS, every time the standard print panel is opened — e.g. **⌘P in Preview, then Cancel** — `PrintingUI` creates a `PMPrinterListController` that is never deallocated. It keeps every installed printer's parsed PPD data alive, so memory grows by tens of MB per open (depending on installed printers) and is only reclaimed when the app quits.
 
 - Reported to Apple: **FB25555507** (Feedback Assistant)
+- Public mirror: [Open Radar FB25555507](https://openradar.appspot.com/FB25555507)
 - Found by a friend; root-cause analysis by Tomohiro Kishi ([@kishisan](https://github.com/kishisan))
 - Confirmed on: macOS 26.7.1 (25G241), Apple silicon, one machine with 14 printer queues. All measurements below are from that machine. The Preview and `heap`/`leaks` numbers were measured once there; everything else can be re-run with the programs in this repo.
 
